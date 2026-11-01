@@ -54,13 +54,13 @@ fun HmiDashboardScreen(
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // 1. TOP HEADER & RIDE MODE PILL
+
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // App Branding / Title
+
                 Text(
                     text = "AAOS DIGITAL COCKPIT",
                     color = Color.Gray,
@@ -69,7 +69,6 @@ fun HmiDashboardScreen(
                     letterSpacing = 1.5.sp
                 )
 
-                // Current Ride Mode Badge
                 Surface(
                     color = cardBackground,
                     shape = RoundedCornerShape(16.dp),
@@ -84,7 +83,6 @@ fun HmiDashboardScreen(
                     )
                 }
 
-                // System Clock Placeholder
                 Text(
                     text = "10:22 PM",
                     color = Color.White.copy(alpha = 0.8f),
@@ -93,7 +91,6 @@ fun HmiDashboardScreen(
                 )
             }
 
-            // Error / Edge-Case Banner (e.g., negative speed clamping warning)
             if (uiState.errorMessage != null) {
                 Surface(
                     color = alertRed.copy(alpha = 0.2f),
@@ -112,7 +109,6 @@ fun HmiDashboardScreen(
                 Spacer(modifier = Modifier.height(24.dp))
             }
 
-            // 2. CENTER SPEEDOMETER READOUT
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -132,7 +128,6 @@ fun HmiDashboardScreen(
                 )
             }
 
-            // 3. BOTTOM STATUS CARDS (Motor & Kill-Switch Indicators)
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -140,7 +135,7 @@ fun HmiDashboardScreen(
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                // Motor Status Component
+
                 DashboardStatusCard(
                     title = "MOTOR STATUS",
                     statusText = if (uiState.isMotorOn) "MOTOR ON" else "MOTOR OFF",
@@ -149,7 +144,6 @@ fun HmiDashboardScreen(
                     cardBg = cardBackground
                 )
 
-                // Kill-Switch Status Component (Highlights Red when Active)
                 DashboardStatusCard(
                     title = "KILL-SWITCH",
                     statusText = if (uiState.isKillSwitchActive) "ACTIVE" else "INACTIVE",
